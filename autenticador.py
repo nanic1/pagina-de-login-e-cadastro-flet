@@ -218,7 +218,16 @@ def main(page:ft.Page):
         )
     ])
 
+    def resize_controls(e):
+        login.controls[0].width = page.window_width - 10
+        login.controls[0].height = page.window_height - 60
 
+        register.controls[0].width = page.window_width - 10
+        register.controls[0].height = page.window_height - 60
+
+        page.update()
+
+    page.on_resize.subscribe(resize_controls)
     page.add(register)
 if __name__ == '__main__':
     ft.app(target=main)
